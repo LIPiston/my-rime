@@ -32,3 +32,4 @@ rime_deployer
 rime_patch
 *.gram
 README.md.bak
+.github/workflows/dict-updater.yml.bak
