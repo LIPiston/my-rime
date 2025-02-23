@@ -1,6 +1,6 @@
  
-name: Dictionary Partial Updater
-# by deepseek-r1
+name: Dictionary Partial Updater by deepseek-r1
+
 on:
   schedule:
     - cron: '0 0 * * *' # UTC 时间每天 0 点
@@ -51,18 +51,4 @@ jobs:
           git commit -m "增量更新词库 (夜间构建)"
           git push origin main
         fi
-       
-      # 可选的变更记录功能（追加到第四步之后）
-      - name: Generate Change Log
-        run: |
-        # 生成差异报告
-        git diff --name-status HEAD^ cn_dict/ > changes.log
-        # 将报告添加为构建产物
-        echo "CHANGED_FILES=$(cat changes.log | grep '^[AM]' | cut -f2 | tr '\n' ' ')" >> $GITHUB_ENV
-        # 上传日志
-        actions/upload-artifact@v3
-          with:
-          name: change-log
-          path: changes.log
- 
  
