@@ -33,3 +33,5 @@ rime_patch
 *.gram
 README.md.bak
 .github/workflows/dict-updater.yml.bak
+.gitignore.bak
+rime_frost.schema.yaml.bak
