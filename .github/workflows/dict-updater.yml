@@ -1,9 +1,9 @@
  
-name: Dictionary Partial Updater by deepseek-r1
+name: Dictionary Partial Updater
 
 on:
   schedule:
-    - cron: '0 0 * * *' # UTC 时间每天 0 点
+    - cron: '0 0 * * *'  # UTC 时间每天 0 点
   workflow_dispatch:
 
 jobs:
@@ -26,29 +26,35 @@ jobs:
     # 第三步：智能解压覆盖
     - name: Smart unzip
       run: |
-        # 创建临时目录
         mkdir temp_unzip
-        # 解压到临时目录
         unzip -o cn_dicts.zip -d temp_unzip/
-        # 增量覆盖目标目录（保留非 ZIP 中的文件）
         rsync -av --delete temp_unzip/ cn_dict/
-        # 清理临时文件
         rm -rf temp_unzip
 
     # 第四步：智能提交（仅当有变更时）
     - name: Conditional Commit
       run: |
-        # 配置 Git 身份
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         
-        # 检测文件变更
         if git diff --quiet; then
           echo "No changes detected"
         else
-          # 仅添加 cn_dict 目录的变更
           git add cn_dict/
           git commit -m "增量更新词库 (夜间构建)"
           git push origin main
         fi
+
+    # 可选的变更日志生成（已修复缩进）
+    - name: Generate Change Log
+      run: |
+        git diff --name-status HEAD^ cn_dict/ > changes.log
+        echo "CHANGED_FILES=$(cat changes.log | grep '^[AM]' | cut -f2 | tr '\n' ' ')" >> $GITHUB_ENV
+        
+      # 正确使用上传动作
+    - name: Upload Log
+      uses: actions/upload-artifact@v4
+      with:
+        name: change-log
+        path: changes.log
  
