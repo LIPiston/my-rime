@@ -44,13 +44,13 @@ jobs:
           git push origin main
         fi
 
-    # 可选的变更日志生成（已修复缩进）
+    # 可选的变更日志生成
     - name: Generate Change Log
       run: |
         git diff --name-status HEAD^ cn_dict/ > changes.log
         echo "CHANGED_FILES=$(cat changes.log | grep '^[AM]' | cut -f2 | tr '\n' ' ')" >> $GITHUB_ENV
         
-      # 正确使用上传动作
+      # 上传log
     - name: Upload Log
       uses: actions/upload-artifact@v4
       with:
