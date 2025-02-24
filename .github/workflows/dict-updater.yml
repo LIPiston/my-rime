@@ -1,5 +1,4 @@
- 
-name: Dictionary Partial Updater
+name: dict-updater
 
 on:
   schedule:
