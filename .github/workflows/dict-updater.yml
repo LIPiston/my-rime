@@ -27,7 +27,7 @@ jobs:
       run: |
         mkdir temp_unzip
         unzip -o cn_dicts.zip -d temp_unzip/
-        rsync -av --delete temp_unzip/ cn_dict/
+        rsync -av --delete temp_unzip/ .
         rm -rf temp_unzip
 
     # 第四步：智能提交（仅当有变更时）
