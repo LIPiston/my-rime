@@ -3,7 +3,7 @@
 #https://github.com/amzxyz/RIME-LMDG
 ---
 name: chars
-version: "2025-02-23 16:54"
+version: "2025-02-25 00:05"
 sort: by_weight
 ...
 啊	a	915
@@ -18801,8 +18801,8 @@ sort: by_weight
 𨝎	kāng	1
 𨻷	kāng	1
 𪎵	kàng	1
-考	kǎo	812
-靠	kào	726
+靠	kào	812
+考	kǎo	726
 烤	kǎo	712
 拷	kǎo	518
 铐	kào	443
@@ -45099,11 +45099,11 @@ sort: by_weight
 拥	yōng	718
 永	yǒng	711
 勇	yǒng	672
+咏	yǒng	655
 泳	yǒng	643
 涌	yǒng	611
 庸	yōng	603
 雍	yōng	551
-咏	yǒng	547
 佣	yōng	547
 佣	yòng	537
 俑	yǒng	500
@@ -45244,11 +45244,11 @@ sort: by_weight
 有	yǒu	926
 又	yòu	819
 由	yóu	809
+右	yòu	807
 游	yóu	801
 友	yǒu	799
+油	yóu	790
 优	yōu	785
-油	yóu	774
-右	yòu	733
 尤	yóu	704
 邮	yóu	691
 幼	yòu	667
@@ -46617,8 +46617,8 @@ sort: by_weight
 𫑛	yuè	1
 𫖵	yuè	1
 彟	yuē	1
-运	yùn	795
-云	yún	738
+云	yún	798
+运	yùn	735
 孕	yùn	677
 允	yǔn	655
 匀	yún	634
@@ -47154,8 +47154,8 @@ sort: by_weight
 𫁘	zào	1
 𫓇	zào	1
 𫝰	zào	1
+则	zé	779
 择	zé	774
-则	zé	771
 责	zé	744
 泽	zé	671
 啧	zé	514
