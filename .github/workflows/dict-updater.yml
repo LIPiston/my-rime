@@ -25,7 +25,7 @@ jobs:
         curl -L -o cn_dicts.zip \
         https://github.com/amzxyz/RIME-LMDG/releases/download/dict-nightly/cn_dicts.zip
 
-    # 第三步：智能解压覆盖
+    # 第三步：解压覆盖
     - name: Smart unzip
       run: |
         mkdir temp_unzip
@@ -33,7 +33,7 @@ jobs:
         cp -f -r temp_unzip/* .
         rm -rf temp_unzip
 
-    # 第四步：智能提交（仅当有变更时）
+    # 第四步：提交
     - name: Conditional Commit
       run: |
         git config --global user.name "GitHub Actions"
@@ -41,16 +41,3 @@ jobs:
         git add cn_dicts/
         git commit -m "增量更新词库 (夜间构建)"
         git push origin main
-
-    # 可选的变更日志生成
-    - name: Generate Change Log
-      run: |
-        git diff --name-status HEAD^ cn_dict/ > changes.log
-        echo "CHANGED_FILES=$(cat changes.log | grep '^[AM]' | cut -f2 | tr '\n' ' ')" >> $GITHUB_ENV
-        
-      # 上传log
-    - name: Upload Log
-      uses: actions/upload-artifact@v4
-      with:
-        name: change-log
-        path: changes.log
