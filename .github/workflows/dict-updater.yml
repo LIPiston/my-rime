@@ -2,7 +2,7 @@ name: dict-updater
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # UTC 时间每天 0 点
+    - cron: '0 20 * * *' 
   workflow_dispatch:
 
 jobs:
@@ -36,5 +36,11 @@ jobs:
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         git add cn_dicts/
-        git commit -m "增量更新词库 (夜间构建)"
-        git push origin main
+        
+        if ! git diff --cached --quiet -- cn_dicts/; then
+          echo "检测到变更，正在提交..."
+          git commit -m "增量更新词库 (夜间构建)"
+          git push origin main
+        else
+          echo "无变更，跳过提交"
+        fi
