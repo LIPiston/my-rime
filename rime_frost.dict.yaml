@@ -4,6 +4,7 @@
 ---
 name: rime_frost
 version: "2025-02-28"
+use_preset_vocabulary: false
 import_tables:
   - cn_dicts/8105     # 字表
   - cn_dicts/41448  # 大字表（按需启用）
