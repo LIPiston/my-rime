@@ -5,9 +5,6 @@ on:
     - cron: '0 0 * * *'  # UTC 时间每天 0 点
   workflow_dispatch:
 
-permissions:
-  contents: write
-  
 jobs:
   update-dictionary:
     runs-on: ubuntu-latest
